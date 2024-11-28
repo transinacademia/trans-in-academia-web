@@ -18,6 +18,10 @@ Trans in Academia! (TiA!) is an organization established by Chinese trans people
 
 This project uses the [Nuxt.js][nuxt-link] framework, [Tailwind CSS][tailwind-link] for styling, [pnpm][pnpm-link] as the package manager, and [ESLint][eslint-link] and [Prettier][prettier-link] for code formatting. The database is powered by [Cloudflare KV][cloudflare-link], and the project is deployed on [Cloudflare Pages][cloudflare-link].
 
+## Development
+
+Please refer to the [development documentation](docs/DEV.md) for more information about the project (in Chinese).
+
 ## License
 
 The code of this project is licensed under the [MIT License](LICENSE). Unless otherwise specified, the content is licensed under the [CC BY 4.0 License](LICENSE-CC). If you wish to cite this project, please use the following format:

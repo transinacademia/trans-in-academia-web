@@ -18,6 +18,10 @@
 
 本项目采用 [Nuxt.js][nuxt-link] 框架，使用 [Tailwind CSS][tailwind-link] 进行样式设计，使用 [pnpm][pnpm-link] 作为包管理器，使用 [ESLint][eslint-link] 和 [Prettier][prettier-link] 进行代码规范化。数据库使用 [Cloudflare KV][cloudflare-link]，部署在 [Cloudflare Pages][cloudflare-link] 上。
 
+## 开发
+
+请查看 [开发文档](docs/DEV.md) 以了解更多关于项目的开发信息。
+
 ## 许可证
 
 本项目代码部分采用 [MIT 许可证](LICENSE) 进行许可。除特别注明外，内容均采用 [CC BY 4.0 许可证](LICENSE-CC) 进行许可。若你想标注引用，请使用以下格式：

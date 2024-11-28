@@ -6,14 +6,12 @@
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
-    "preview": "pnpm run build && wrangler pages dev",
-    "deploy": "pnpm run build && wrangler pages deploy",
+    "deploy": "npx nuxthub deploy",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "prepare": "husky",
-    "postinstall": "nuxt prepare",
-    "cf-typegen": "wrangler types"
+    "postinstall": "nuxt prepare"
   },
   "dependencies": {
     "@nuxt/fonts": "^0.10.2",
