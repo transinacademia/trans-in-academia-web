@@ -7,15 +7,15 @@
       <NuxtLink
         v-for="(social, index) in socialLinks"
         :key="index"
-        :href="social.href"
+        :to="social.href"
         target="_blank"
-        rel="noopener noreferrer"
         class="flex flex-col items-center no-underline transition-transform duration-700 hover:scale-105"
       >
         <NuxtImg
           :src="social.icon"
           alt="social.label"
           class="mb-2 h-12 w-12 overflow-hidden rounded-2xl object-cover md:h-16 md:w-16"
+          placeholder
         />
         <span class="font-sans text-xs font-semibold sm:text-sm md:text-base">
           {{ social.label }}

@@ -20,5 +20,20 @@
     "language": "切换语言",
     "link": "点击跳转至 %{title}",
     "external": "此链接将在新标签页中打开"
+  },
+  "error": {
+    "backToHome": "返回首页",
+    "unauthorized": {
+      "title": "(¬_¬) 未授权",
+      "description": "抱歉，您需要登录或授权才能访问这个页面 🔑"
+    },
+    "notFound": {
+      "title": "(；′⌒`) 页面迷路啦~",
+      "description": "抱歉，您要找的页面已经不见了，或者它从未存在过 🔍"
+    },
+    "default": {
+      "title": "(╥﹏╥) 服务器出错啦~",
+      "description": "抱歉，内部出现了一点问题，我们正在抢修 🛠️"
+    }
   }
 }
