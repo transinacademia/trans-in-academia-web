@@ -1,10 +1,10 @@
 <template>
   <div
     v-if="showButton"
-    class="fixed bottom-4 right-4"
+    class="fixed bottom-4 right-4 z-10"
   >
     <button
-      class="flex h-12 w-12 items-center justify-center rounded-full bg-tiaBlue p-4 text-light-foreground shadow-lg transition-transform duration-300 ease-in-out hover:scale-110 hover:bg-tiaBlue-dark focus:outline-none dark:bg-tiaPink dark:text-dark-foreground dark:hover:bg-tiaPink-dark"
+      class="flex h-12 w-12 items-center justify-center rounded-full bg-tiaBlue p-4 text-white shadow-lg transition-transform duration-300 ease-in-out hover:scale-110 hover:bg-tiaBlue-dark focus:outline-none dark:bg-tiaPink dark:hover:bg-tiaPink-dark"
       @click="scrollToTop"
     >
       <Icon
