@@ -1,0 +1,58 @@
+{
+  "name": "tia-web",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "pnpm run build && wrangler pages dev",
+    "deploy": "pnpm run build && wrangler pages deploy",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "prepare": "husky",
+    "postinstall": "nuxt prepare",
+    "cf-typegen": "wrangler types"
+  },
+  "dependencies": {
+    "@nuxt/fonts": "^0.10.2",
+    "@nuxt/icon": "^1.8.2",
+    "@nuxt/image": "^1.8.1",
+    "@nuxtjs/i18n": "^9.1.0",
+    "@nuxtjs/seo": "^2.0.2",
+    "nuxt": "^3.14.1592",
+    "vue": "latest",
+    "vue-router": "latest"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20241127.0",
+    "@nuxt/eslint": "^0.7.2",
+    "@nuxthub/core": "^0.8.7",
+    "@nuxtjs/tailwindcss": "^6.12.2",
+    "@tailwindcss/line-clamp": "^0.4.4",
+    "@zl-asica/prettier-config": "^1.0.9",
+    "autoprefixer": "^10.4.20",
+    "cssnano": "^7.0.6",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.2.10",
+    "nitro-cloudflare-dev": "^0.2.1",
+    "postcss": "^8.4.49",
+    "prettier": "^3.4.1",
+    "prettier-plugin-tailwindcss": "^0.6.9",
+    "tailwindcss": "^3.4.15",
+    "typescript": "~5.6",
+    "vue-tsc": "^2.1.10",
+    "wrangler": "^3.91.0"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,vue}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,css}": [
+      "prettier --write"
+    ]
+  },
+  "packageManager": "pnpm@9.14.2"
+}

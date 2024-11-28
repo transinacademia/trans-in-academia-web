@@ -1,0 +1,99 @@
+name: 🎨 Code Lint and Format
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+concurrency:
+  group: code-lint-format
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    name: 🛠️ Code linter and formatter
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        name: 🛠️ Install pnpm
+        with:
+          run_install: false
+
+      - name: 🛠️ Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+          cache: 'pnpm'
+
+      - name: 🗂️ Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - uses: actions/cache@v4
+        name: ⚡ Setup pnpm cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: 📂 Install dependencies
+        run: pnpm install
+
+      - name: 🚨 Lint Code
+        run: pnpm lint:fix | tee lint-results.txt
+
+      - name: 🎨 Format Code
+        run: pnpm format | tee prettier-results.txt
+
+      - name: 🚮 Clean up results
+        run: |
+          sed -i 's/\x1b\[[0-9;]*m//g' prettier-results.txt
+          sed -i 's/\x1b\[[0-9;]*m//g' lint-results.txt
+
+      - name: 📄 Format all results
+        run: |
+          {
+            echo "### 🎨 Prettier Format Check"
+            echo ""
+            if grep -q "(changed)" prettier-results.txt; then
+              echo "⚠️ **Prettier Issues Found** - Some format issues are fixed automatically by Prettier:"
+              echo '```'
+              grep -E "\s+\(changed\)" prettier-results.txt || true
+              echo '```'
+            else
+              echo "✅ **Prettier**: No formatting issues found!"
+            fi
+            echo ""
+            echo "### 🎨 Lint Check"
+            echo ""
+            if grep -qE "^[^0]* problems" lint-results.txt; then
+              echo "⚠️ **Lint Issues Found** - PLEASE FIX THEM!"
+              echo '```'
+              cat lint-results.txt
+              echo '```'
+            else
+              echo "✅ **Lint**: No linting issues found!"
+            fi
+          } > formatted-results.txt
+
+      - name: 💬 Post test results and preview link to PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const testResults = fs.readFileSync('formatted-results.txt', 'utf8');
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `${testResults}`
+            });

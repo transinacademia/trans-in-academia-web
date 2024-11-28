@@ -1,0 +1,24 @@
+{
+  "nuxtSiteConfig": {
+    "name": "跨儿学术小组 (TiA!) ",
+    "description": "跨儿学术小组 (TiA!) 建立于 2022 年。作为由华语跨儿建立和主导的组织，TiA! 致力于记录我们所在社群的理论和实践知识，帮助跨儿求学、进修、工作，分享与跨儿有关的学术知识，并以跨儿的视角发声。",
+    "keywords": "跨儿, 跨性别, LGBTQ+, 学术, 支持"
+  },
+  "contact": "联系我们",
+  "license": {
+    "before": "本站采用",
+    "after": "许可协议授权"
+  },
+  "header": {
+    "home": "首页",
+    "library": "资料",
+    "uniGuide": "选校"
+  },
+  "aria": {
+    "menu": "打开菜单",
+    "skipToContent": "跳转至内容",
+    "language": "切换语言",
+    "link": "点击跳转至 %{title}",
+    "external": "此链接将在新标签页中打开"
+  }
+}
