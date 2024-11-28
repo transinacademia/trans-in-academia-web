@@ -1,0 +1,91 @@
+name: Auto-label PR based on file paths
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  label:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Label PR based on changes with colors
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const prFiles = await github.rest.pulls.listFiles({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number
+            });
+
+            // Define the labels and their colors
+            const labelsToColor = {
+              components: '1f77b4',   // Blue - Components Related
+              pages: 'ff7f0e',        // Orange - Pages Related
+              stores: '2ca02c',       // Green - Stores Related (for Vuex or Pinia)
+              server: '9467bd',       // Purple - Server Related
+              layouts: 'ffdd57',      // Yellow - Layouts Related
+              assets: 'd62728',       // Red - Assets Related
+              i18n: '8c564b',         // Brown - i18n Related
+              types: 'e377c2',        // Pink - Types Related
+              dependencies: 'e377c2', // Pink - Dependencies Related
+            };
+
+            const labels = new Set();
+
+            const labelPaths = {
+              components: 'components',
+              pages: ['pages', 'app.vue'],
+              stores: ['store', 'stores'],
+              server: 'server',
+              layouts: 'layouts',
+              assets: ['public', 'assets'],
+              i18n: 'i18n',
+              types: 'types',
+              dependencies: ['package.json', 'pnpm-lock.yaml']
+            };
+
+            prFiles.data.forEach(file => {
+              Object.keys(labelPaths).forEach(label => {
+                const paths = Array.isArray(labelPaths[label]) ? labelPaths[label] : [labelPaths[label]];
+                if (paths.some(path => file.filename.startsWith(path))) {
+                  labels.add(label);
+                }
+              });
+            });
+
+            if (labels.size > 0) {
+              for (const label of labels) {
+                try {
+                  // Check if the label exists
+                  await github.rest.issues.getLabel({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    name: label
+                  });
+                } catch (error) {
+                  // If label doesn't exist, create it with the specified color
+                  await github.rest.issues.createLabel({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    name: label,
+                    color: labelsToColor[label] || 'b0b0b0', // Use default gray if no color specified
+                  });
+                }
+              }
+
+              // Add labels to the PR
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                labels: Array.from(labels)
+              });
+            }

@@ -1,24 +1,12 @@
 <template>
-  <div
-    class="flex min-h-screen flex-col bg-light-background text-light-foreground dark:bg-dark-background dark:text-dark-foreground"
-  >
-    <NuxtRouteAnnouncer />
+  <NuxtRouteAnnouncer />
 
-    <UiProgressBar />
-    <UiBackToTop />
-
-    <SiteHeader />
-    <main class="container mx-auto max-w-7xl flex-grow px-4 py-8">
-      <NuxtPage />
-    </main>
-    <SiteFooter />
-  </div>
+  <NuxtLayout>
+    <NuxtPage />
+  </NuxtLayout>
 </template>
 
 <script setup>
-  import SiteHeader from '~/components/layout/SiteHeader.vue';
-  import SiteFooter from '~/components/layout/SiteFooter.vue';
-
   const { t } = useI18n();
 
   useSeoMeta({

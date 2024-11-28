@@ -16,6 +16,10 @@ jobs:
   build-and-deploy:
     name: 🛠️ Code linter and formatter
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
 
     steps:
       - name: 📥 Checkout Code

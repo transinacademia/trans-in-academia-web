@@ -20,5 +20,20 @@
     "language": "Switch language",
     "link": "Click to visit %{link}",
     "external": "Open in a new tab"
+  },
+  "error": {
+    "backToHome": "Back to home",
+    "unauthorized": {
+      "title": "(¬_¬) Unauthorized",
+      "description": "Sorry, you need to log in or authorize to access this page 🔑"
+    },
+    "notFound": {
+      "title": "(；′⌒`) Page not found",
+      "description": "Sorry, the page you are looking for is missing or never existed 🔍"
+    },
+    "default": {
+      "title": "(╥﹏╥) Server error",
+      "description": "Sorry, something went wrong on our end, we are working on it 🛠️"
+    }
   }
 }

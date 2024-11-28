@@ -13,6 +13,7 @@
           src="/logo.webp"
           alt="Site Logo"
           class="h-8 w-8 md:h-10 md:w-10"
+          placeholder
         />
 
         <!-- Title -->
@@ -44,7 +45,7 @@
           isOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
         "
       >
-        <HeaderMenu
+        <LayoutSiteHeaderMenu
           :is-mobile="true"
           ul-class-name="flex flex-col items-start gap-4 p-6"
           @click-handler="toggleOpen"
@@ -60,7 +61,7 @@
       />
 
       <!-- Desktop Menu -->
-      <HeaderMenu
+      <LayoutSiteHeaderMenu
         :is-mobile="false"
         ul-class-name="hidden md:flex md:gap-6"
       />
@@ -69,8 +70,6 @@
 </template>
 
 <script lang="ts" setup>
-  import HeaderMenu from './SiteHeaderMenu.vue';
-
   const siteTitle = 'Trans in Academia!';
   const mobileSiteTitle = 'TiA!';
 

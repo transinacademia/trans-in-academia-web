@@ -46,6 +46,7 @@
           :src="event.image"
           :alt="event.title"
           class="mb-4 w-full rounded-lg object-cover"
+          placeholder
         />
 
         <!-- Title / Available Languages -->
@@ -67,7 +68,8 @@
           <NuxtLink
             v-for="link in event.links"
             :key="link.label"
-            :href="link.url"
+            :to="link.url"
+            target="_blank"
             class="rounded bg-tiaBlue px-4 py-2 text-white no-underline transition-transform duration-700 hover:scale-105 hover:bg-tiaBlue-dark dark:bg-tiaPink dark:hover:bg-tiaPink-dark"
           >
             {{ link.label }}
