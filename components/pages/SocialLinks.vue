@@ -1,8 +1,8 @@
 <template>
   <UiCard custom-class="text-center w-full md:flex-1">
-    <h3 class="mb-4 text-center text-2xl font-bold md:mb-7">
+    <h2 class="mb-4 text-center text-2xl font-bold md:mb-7">
       {{ $t('contact') }}
-    </h3>
+    </h2>
     <div class="grid grid-cols-5 gap-2 md:gap-4">
       <NuxtLink
         v-for="(social, index) in socialLinks"
@@ -13,11 +13,11 @@
       >
         <NuxtImg
           :src="social.icon"
-          alt="social.label"
+          :alt="social.label"
           class="mb-2 h-12 w-12 overflow-hidden rounded-2xl object-cover md:h-16 md:w-16"
           placeholder
         />
-        <span class="font-sans text-xs font-semibold sm:text-sm md:text-base">
+        <span class="text-xs font-semibold sm:text-sm md:text-base">
           {{ social.label }}
         </span>
       </NuxtLink>
