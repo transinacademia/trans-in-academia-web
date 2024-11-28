@@ -27,7 +27,6 @@ export default defineNuxtConfig({
     fontsource: {
       families: {
         Inter: [100, 300, 400, 500, 700],
-        'Open+Sans': [400, 600, 700],
       },
     },
   },
