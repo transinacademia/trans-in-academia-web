@@ -12,13 +12,8 @@
         </UiCustomCard>
       </div>
 
-      <SocialLinks />
+      <HomeSocialLinks />
     </div>
-    <EventList />
+    <HomeEventList />
   </div>
 </template>
-
-<script lang="ts" setup>
-  import SocialLinks from '~/components/pages/SocialLinks.vue';
-  import EventList from '~/components/pages/EventList.vue';
-</script>
