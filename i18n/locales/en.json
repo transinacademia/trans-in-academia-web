@@ -1,7 +1,6 @@
 {
   "nuxtSiteConfig": {
     "name": "Trans in Academia! (TiA!)",
-    "titleTemplate": "%s - Site Title",
     "description": "Trans in Academia! (TiA!) is an organization established by Chinese trans people in 2022. TiA! aims to document theoretical and practical knowledge from the Sinophone trans community, help trans people pursue studies, professional development, and employment, share academic knowledge related to trans issues, and produce original content from the perspective of trans people.",
     "keywords": "transgender, LGBTQ+, academia, trans issues, support"
   },
