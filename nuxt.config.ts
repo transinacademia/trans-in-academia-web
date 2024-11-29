@@ -41,7 +41,7 @@ export default defineNuxtConfig({
   ],
   routeRules: {
     '/': {
-      prerender: true,
+      ssr: true,
     },
     '/dash/**': {
       ssr: false,
@@ -70,7 +70,7 @@ export default defineNuxtConfig({
     langDir: 'locales/',
     detectBrowserLanguage: {
       useCookie: true,
-      cookieKey: 'i18n_language',
+      cookieKey: 'tia_i18n_language',
       redirectOn: 'root',
       alwaysRedirect: true,
       fallbackLocale: 'en',

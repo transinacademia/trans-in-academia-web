@@ -11,6 +11,8 @@
 </template>
 
 <script lang="ts" setup>
+  defineI18nRoute(false);
+
   useSeoMeta({
     title: '管理后台',
   });
