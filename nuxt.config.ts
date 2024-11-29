@@ -39,6 +39,14 @@ export default defineNuxtConfig({
     '@nuxthub/core',
     '@nuxt/ui',
   ],
+  routeRules: {
+    '/': {
+      prerender: true,
+    },
+    '/dash/**': {
+      ssr: false,
+    },
+  },
   ui: {
     global: true,
   },
@@ -80,5 +88,8 @@ export default defineNuxtConfig({
       autoprefixer: {},
       ...(process.env.NODE_ENV === 'production' ? { cssnano: {} } : {}),
     },
+  },
+  runtimeConfig: {
+    tiaAuthToken: 'token',
   },
 });

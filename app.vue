@@ -3,10 +3,16 @@
 
   <NuxtLayout>
     <NuxtPage />
+    <Toaster
+      rich-colors
+      position="top-center"
+    />
   </NuxtLayout>
 </template>
 
 <script setup>
+  import { Toaster } from 'vue-sonner';
+
   const { t } = useI18n();
 
   useSeoMeta({
