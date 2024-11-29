@@ -9,7 +9,7 @@
         :key="index"
         :to="social.href"
         target="_blank"
-        class="flex flex-col items-center no-underline transition-transform duration-700 hover:scale-105"
+        class="flex flex-col items-center no-underline transition-transform duration-700 hover:scale-110"
       >
         <NuxtImg
           :src="social.icon"

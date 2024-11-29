@@ -9,12 +9,7 @@
     title: '登录',
   });
 
-  useHead({
-    meta: [
-      {
-        name: 'robots',
-        content: 'noindex nofollow',
-      },
-    ],
+  useServerSeoMeta({
+    robots: 'index, follow',
   });
 </script>

@@ -15,28 +15,19 @@
     title: '管理后台',
   });
 
-  useHead({
-    meta: [
-      {
-        name: 'robots',
-        content: 'noindex nofollow',
-      },
-    ],
+  useServerSeoMeta({
+    robots: 'index, follow',
   });
 
   const response = await fetch('/api/events');
   const events: TiAEvents[] = await response.json();
   const data = events.map((event: TiAEvents) => ({
-    // map event properties to TableRow properties
-    // example:
-    id: event.id,
-    time: new Date(event.time as unknown as string).toLocaleString(),
+    time: new Date(event.time as unknown as string).toLocaleDateString(),
     name: event.title,
     lang: Array.isArray(event.lang) ? event.lang.map((l) => l).join(', ') : '',
   }));
 
   const columnNames = [
-    { key: 'id', name: 'ID', label: 'ID' },
     { key: 'time', name: 'time', label: '时间' },
     { key: 'name', name: 'name', label: '名称' },
     { key: 'lang', name: 'lang', label: '语言' },
