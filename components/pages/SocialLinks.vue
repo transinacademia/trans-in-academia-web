@@ -1,5 +1,5 @@
 <template>
-  <UiCard custom-class="text-center w-full md:flex-1">
+  <UiCustomCard custom-class="text-center w-full md:flex-1">
     <h2 class="mb-4 text-center text-2xl font-bold md:mb-7">
       {{ $t('contact') }}
     </h2>
@@ -22,7 +22,7 @@
         </span>
       </NuxtLink>
     </div>
-  </UiCard>
+  </UiCustomCard>
 </template>
 
 <script lang="ts" setup>

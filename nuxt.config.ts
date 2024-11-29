@@ -2,7 +2,6 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
-  css: ['~/assets/css/main.css'],
   app: {
     head: {
       link: [
@@ -34,13 +33,23 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/eslint',
     '@nuxt/fonts',
-    '@nuxtjs/tailwindcss',
-    '@nuxt/icon',
     '@nuxtjs/i18n',
     '@nuxtjs/seo',
     'nitro-cloudflare-dev',
     '@nuxthub/core',
+    '@nuxt/ui',
   ],
+  routeRules: {
+    '/': {
+      prerender: true,
+    },
+    '/dash/**': {
+      ssr: false,
+    },
+  },
+  ui: {
+    global: true,
+  },
   hub: {
     kv: true,
   },
@@ -79,5 +88,8 @@ export default defineNuxtConfig({
       autoprefixer: {},
       ...(process.env.NODE_ENV === 'production' ? { cssnano: {} } : {}),
     },
+  },
+  runtimeConfig: {
+    tiaAuthToken: 'token',
   },
 });

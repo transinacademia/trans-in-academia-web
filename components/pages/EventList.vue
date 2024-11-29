@@ -4,7 +4,7 @@
       v-if="loading"
       class="grid flex-shrink flex-grow auto-rows-min grid-cols-1 justify-items-center gap-6 md:grid-cols-2 lg:grid-cols-3"
     >
-      <UiCard
+      <UiCustomCard
         v-for="index in 6"
         :key="'loading-' + index"
         class="w-full text-start"
@@ -30,13 +30,13 @@
         <div
           class="event-content mt-4 h-6 w-full rounded bg-gray-200 dark:bg-gray-800"
         />
-      </UiCard>
+      </UiCustomCard>
     </div>
     <div
       v-else
       class="grid flex-shrink flex-grow auto-rows-min grid-cols-1 justify-items-center gap-6 md:grid-cols-2 lg:grid-cols-3"
     >
-      <UiCard
+      <UiCustomCard
         v-for="event in events"
         :key="event.id"
         class="w-full text-start"
@@ -108,7 +108,7 @@
             name="heroicons:chevron-down"
           />
         </button>
-      </UiCard>
+      </UiCustomCard>
     </div>
   </div>
 </template>
