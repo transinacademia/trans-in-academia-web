@@ -15,8 +15,8 @@
   },
   "dependencies": {
     "@nuxt/fonts": "^0.10.2",
-    "@nuxt/icon": "^1.8.2",
     "@nuxt/image": "^1.8.1",
+    "@nuxt/ui": "2.19.2",
     "@nuxtjs/i18n": "^9.1.0",
     "@nuxtjs/seo": "^2.0.2",
     "nuxt": "^3.14.1592",
@@ -25,9 +25,9 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20241127.0",
+    "@iconify-json/mdi": "^1.2.1",
     "@nuxt/eslint": "^0.7.2",
     "@nuxthub/core": "^0.8.7",
-    "@nuxtjs/tailwindcss": "^6.12.2",
     "@tailwindcss/line-clamp": "^0.4.4",
     "@zl-asica/prettier-config": "^1.0.9",
     "autoprefixer": "^10.4.20",
@@ -38,7 +38,6 @@
     "postcss": "^8.4.49",
     "prettier": "^3.4.1",
     "prettier-plugin-tailwindcss": "^0.6.9",
-    "tailwindcss": "^3.4.15",
     "typescript": "~5.6",
     "vue-tsc": "^2.1.10",
     "wrangler": "^3.91.0"
@@ -52,5 +51,5 @@
       "prettier --write"
     ]
   },
-  "packageManager": "pnpm@9.14.2"
+  "packageManager": "pnpm@9.14.3"
 }

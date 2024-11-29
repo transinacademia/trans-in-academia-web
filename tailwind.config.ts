@@ -1,7 +1,7 @@
 import type { Config } from 'tailwindcss';
 import lineClamp from '@tailwindcss/line-clamp';
 
-const config: Config = {
+export default <Partial<Config>>{
   content: [
     'app.vue',
     './pages/**/*.vue',
@@ -38,5 +38,3 @@ const config: Config = {
   },
   plugins: [lineClamp],
 };
-
-export default config;
