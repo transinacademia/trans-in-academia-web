@@ -10,7 +10,7 @@
         :to="item.href"
         :title="item.label"
         class="menu-link group"
-        :aria-label="$t('aria.link', { title: item.label })"
+        :aria-label="$t('aria.link', { title: $t(item.label) })"
         @click="props.onClickHandler"
       >
         <!-- Icon -->
@@ -32,7 +32,7 @@
     <li class="menu-item group">
       <button
         class="menu-link"
-        aria-label="$t('aria.language')"
+        :aria-label="$t('aria.language')"
         @click="
           toggleLanguage();
           props.onClickHandler && props.onClickHandler();
@@ -52,7 +52,7 @@
     >
       <button
         class="flex h-12 w-12 items-center justify-center rounded-full bg-gray-100 transition-all duration-300 ease-in-out hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700"
-        aria-label="$t('aria.theme')"
+        :aria-label="$t(isDarkTheme ? 'aria.theme.light' : 'aria.theme.dark')"
         @click="
           toggleTheme();
           props.onClickHandler && props.onClickHandler();

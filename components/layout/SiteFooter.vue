@@ -9,7 +9,7 @@
       rel="license"
       href="http://creativecommons.org/licenses/by/4.0/"
       class="flex items-center gap-2 no-underline transition-all duration-500 hover:font-bold hover:text-tiaBlue dark:hover:text-tiaPink"
-      aria-label="$t('aria.link', { title: 'CC BY 4.0' })"
+      :aria-label="`${$t('aria.link', { title: 'CC BY 4.0' })}$`"
     >
       <NuxtImg
         class="h-6 w-6"

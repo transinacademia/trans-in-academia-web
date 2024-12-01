@@ -69,6 +69,7 @@
             v-for="link in event.links"
             :key="link.label"
             :to="link.url"
+            :aria-label="`${$t('aria.external')}${link.label}`"
             target="_blank"
             class="rounded bg-tiaBlue px-4 py-2 text-white no-underline transition-transform duration-700 hover:scale-105 hover:bg-tiaBlue-dark dark:bg-tiaPink dark:hover:bg-tiaPink-dark"
           >

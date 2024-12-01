@@ -17,9 +17,13 @@
   "aria": {
     "menu": "打开菜单",
     "skipToContent": "跳转至内容",
-    "language": "切换语言",
-    "link": "点击跳转至 %{title}",
-    "external": "此链接将在新标签页中打开"
+    "language": "Switch language to English",
+    "theme": {
+      "light": "切换至亮色模式",
+      "dark": "切换至暗色模式"
+    },
+    "link": "点击跳转至 {title}",
+    "external": "此链接将在新标签页中打开："
   },
   "error": {
     "backToHome": "返回首页",

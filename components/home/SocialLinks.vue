@@ -9,11 +9,11 @@
         :key="index"
         :to="social.href"
         target="_blank"
+        :aria-label="`${$t('aria.external')}${social.label}`"
         class="flex flex-col items-center no-underline transition-transform duration-700 hover:scale-110"
       >
         <NuxtImg
           :src="social.icon"
-          :alt="social.label"
           class="mb-2 h-12 w-12 overflow-hidden rounded-2xl object-cover md:h-16 md:w-16"
           placeholder
         />

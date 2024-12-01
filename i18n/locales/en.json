@@ -17,9 +17,13 @@
   "aria": {
     "menu": "Open menu",
     "skipToContent": "Skip to content",
-    "language": "Switch language",
-    "link": "Click to visit %{link}",
-    "external": "Open in a new tab"
+    "language": "切换语言至 中文",
+    "theme": {
+      "light": "Switch to light mode",
+      "dark": "Switch to dark mode"
+    },
+    "link": "Click to visit {title}",
+    "external": "Open in a new tab: "
   },
   "error": {
     "backToHome": "Back to home",

@@ -5,7 +5,7 @@
       <!-- Logo -->
       <NuxtLink
         to="/"
-        aria-label="$t('aria.link', { title: siteTitle })"
+        :aria-label="`${$t('aria.link', { title: siteTitle })}`"
         class="flex items-center gap-2 text-2xl font-bold no-underline transition-all duration-300 hover:text-tiaPink-light"
       >
         <!-- Icon -->
