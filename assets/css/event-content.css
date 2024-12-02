@@ -1,4 +1,15 @@
 .event-content {
+  transition: max-height 0.3s ease-in-out;
+
+  &.collapsed {
+    max-height: var(--collapsed-height, auto);
+    overflow: hidden;
+  }
+
+  &.expanded {
+    max-height: none;
+  }
+
   h2 {
     @apply mb-4 mt-6 text-xl font-semibold;
   }

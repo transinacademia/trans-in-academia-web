@@ -27,9 +27,7 @@
         <div class="mt-4 h-4 w-32 rounded bg-gray-200 dark:bg-gray-800" />
 
         <!-- Content Placeholder -->
-        <div
-          class="event-content mt-4 h-6 w-full rounded bg-gray-200 dark:bg-gray-800"
-        />
+        <div class="mt-4 h-6 w-full rounded bg-gray-200 dark:bg-gray-800" />
       </UiCustomCard>
     </div>
     <div
@@ -38,8 +36,9 @@
     >
       <UiCustomCard
         v-for="event in events"
+        :id="event.id"
         :key="event.id"
-        class="w-full text-start"
+        class="event-card w-full text-start"
       >
         <!-- Thumbnail -->
         <NuxtImg
@@ -87,8 +86,8 @@
         <div
           class="event-content mt-4 text-wrap transition-all duration-700"
           :class="{
-            'line-clamp-6': !event.showFullText,
-            'line-clamp-none': event.showFullText,
+            collapsed: !event.showFullText,
+            expanded: event.showFullText,
           }"
           v-html="event.content"
         />
@@ -120,9 +119,6 @@
 
   const formatDate = (time: string) => new Date(time).toLocaleString();
 
-  const checkIfClamped = (element: HTMLElement) =>
-    element.scrollHeight > element.clientHeight;
-
   onMounted(async () => {
     const response = await fetch('/api/events');
     const data = (await response.json()) as TiAEvents;
@@ -136,16 +132,44 @@
     }));
 
     loading.value = false;
+    const MAX_COLLAPSED_HEIGHT = 250;
 
     // After the component is mounted, check if the content is clamped
     await nextTick(() => {
-      const contentElements = document.querySelectorAll('.event-content');
+      const eventCards = document.querySelectorAll('.event-card');
 
-      events.value.forEach((_, index) => {
-        const contentElement = contentElements[index] as HTMLElement;
+      eventCards.forEach((card, index) => {
+        const cardElement = card as HTMLElement;
+        const contentElement = cardElement.querySelector(
+          '.event-content'
+        ) as HTMLElement;
 
-        if (contentElement && checkIfClamped(contentElement)) {
-          events.value[index].showMoreButtonVisible = true; // Show the button if clamped
+        if (!contentElement) {
+          return;
+        }
+
+        const totalHeight = cardElement.scrollHeight;
+
+        const nonContentHeight = Array.from(cardElement.children)
+          .filter((child) => child !== contentElement)
+          .reduce((sum, child) => sum + (child as HTMLElement).offsetHeight, 0);
+
+        const collapsedHeight = Math.min(
+          MAX_COLLAPSED_HEIGHT,
+          totalHeight - nonContentHeight
+        );
+
+        if (contentElement.scrollHeight > collapsedHeight) {
+          events.value[index].showMoreButtonVisible = true;
+
+          contentElement.style.setProperty(
+            '--collapsed-height',
+            `${collapsedHeight}px`
+          );
+        } else {
+          events.value[index].showMoreButtonVisible = false;
+
+          contentElement.style.setProperty('--collapsed-height', 'unset');
         }
       });
     });
