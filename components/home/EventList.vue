@@ -34,8 +34,15 @@
       v-else
       class="grid flex-shrink flex-grow auto-rows-min grid-cols-1 justify-items-center gap-6 md:grid-cols-2 lg:grid-cols-3"
     >
+      <UiCustomCard v-if="events.length === 0">
+        <div class="text-center">
+          <h2 class="text-lg font-semibold">暂无活动</h2>
+          <p class="mt-2">若这是本地开发环境，属于正常现象</p>
+        </div>
+      </UiCustomCard>
       <UiCustomCard
         v-for="event in events"
+        v-else
         :id="event.id"
         :key="event.id"
         class="event-card w-full text-start"

@@ -1,5 +1,12 @@
-export default defineEventHandler(async () => {
-  const rawData = (await hubKV().get('events')) as TiAEvents;
+export default defineEventHandler(async (event) => {
+  const { cloudflare } = event.context;
+  const { KV } = cloudflare.env;
+
+  const rawData = (await KV.get('events', { type: 'json' })) as TiAEvents;
+
+  if (!rawData) {
+    return [];
+  }
 
   const sortedEvents = Object.entries(rawData)
     .map(([id, data]) => ({

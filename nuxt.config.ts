@@ -35,7 +35,6 @@ export default defineNuxtConfig({
     '@nuxt/fonts',
     '@nuxtjs/i18n',
     '@nuxtjs/seo',
-    'nitro-cloudflare-dev',
     '@nuxthub/core',
     '@nuxt/ui',
   ],
@@ -51,12 +50,12 @@ export default defineNuxtConfig({
     global: true,
   },
   hub: {
+    ai: false,
+    analytics: false,
+    blob: false,
+    cache: false,
+    database: false,
     kv: true,
-  },
-  $development: {
-    hub: {
-      remote: true,
-    },
   },
   i18n: {
     baseUrl: 'https://www.transinacademia.org',
